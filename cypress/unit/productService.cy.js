@@ -22,9 +22,9 @@ describe('Testes Unitários - Regras de Negócio (Product Service)', () => {
   });
 
   it('5. Deve validar atualização com preço negativo', () => {
-    // Cria produto base
+    // [ Setup ]
     const produto = productService.criarProduto({ nome: 'Monitor HQ', preco: 500, estoque: 10 });
-    // Tenta atualizar pra negativo
+    // [ Act / Assert ]
     expect(() => productService.atualizarProduto(produto.id, { preco: -10 })).to.throw('Preço não pode ser negativo');
   });
 

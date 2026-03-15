@@ -27,10 +27,9 @@ exports.update = (id, productData) => {
     const updatedProduct = {
       ...products[index],
       ...productData,
-      id: parseInt(id) // impede alterar o ID
+      id: parseInt(id)
     };
     
-    // Assegurar tipos se passados no update
     if (updatedProduct.preco !== undefined) updatedProduct.preco = parseFloat(updatedProduct.preco);
     if (updatedProduct.estoque !== undefined) updatedProduct.estoque = parseInt(updatedProduct.estoque);
 

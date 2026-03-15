@@ -18,7 +18,7 @@ describe('Testes de Integração - API de Produtos', () => {
     cy.request('GET', '/produtos').then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body).to.be.an('array');
-      // Esperamos que tenha pelo menos a Cadeira e o Mouse fake salvo em memória
+      // [ Assert Arrays ]
       expect(response.body.length).to.be.greaterThan(0);
     });
   });
@@ -44,11 +44,11 @@ describe('Testes de Integração - API de Produtos', () => {
 
   it('5. Deve deletar o produto e não estar mais disponível (DELETE e GET /produtos/:id)', () => {
     cy.request('DELETE', `/produtos/${createdProductId}`).then((response) => {
-      // DELETE costuma retornar 204 No Content
+      // [ Assert Null/No Content ]
       expect(response.status).to.eq(204);
     });
 
-    // Validar se foi deletado mesmo, enviando failOnStatusCode: false pra não dar trigger em erro do cypress
+    // [ Validate Deletion ]
     cy.request({
       method: 'GET',
       url: `/produtos/${createdProductId}`,
